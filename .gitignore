@@ -1,0 +1,32 @@
+# Node modules
+/node_modules/
+
+# Build output (dist, etc.)
+/dist/
+/out/
+main.js
+main.js.map
+main.d.ts
+data
+data.json
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Log files
+*.log
+
+# Environment files
+.env
+
+# Temporary files from IDEs
+.idea/
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Package lock and npm config
+package-lock.json
+npm-debug.log

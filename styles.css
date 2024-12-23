@@ -1,0 +1,16 @@
+.vulnerability-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.vulnerability-item h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.vulnerability-item p {
+  margin: 5px 0;
+  color: #555;
+}

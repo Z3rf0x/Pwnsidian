@@ -1,0 +1,28 @@
+{
+  "name": "pwnsidian",
+  "version": "1.0.0",
+  "description": "Pwnsidian plugin for Obsidian to manage penetration testing vulnerabilities.",
+  "main": "dist/main.js",
+  "css": "styles.css",
+  "author": "Z3rf0x",
+  "type": "module",
+  "dependencies": {
+    "obsidian": "latest"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "rollup": "^4.29.1",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "build": "tsc && rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
