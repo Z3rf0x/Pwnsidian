@@ -1,0 +1,10 @@
+{
+  "id": "pwnsidian",
+  "name": "Pwnsidian",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Pwnsidian is a plugin for Obsidian designed to simplify penetration testing workflows. Manage vulnerabilities, track OWASP WSTG tests, calculate CVSS scores, and generate comprehensive pentest reports effortlessly.",
+  "author": "Z3rf0x",
+  "authorUrl": "https://github.com/Z3rf0x",
+  "isDesktopOnly": false
+}
