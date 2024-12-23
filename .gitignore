@@ -4,6 +4,8 @@
 # Build output (dist, etc.)
 /dist/
 /out/
+/modals/
+/settings/
 main.js
 main.js.map
 main.d.ts

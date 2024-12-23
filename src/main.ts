@@ -1,12 +1,8 @@
-import {
-  App,
-  Modal,
-  Notice,
-  Plugin,
-  Setting,
-  PluginSettingTab,
-} from "obsidian";
+import { App, Modal, Notice, Plugin } from "obsidian";
 import vulnerabilities from "./data/owasp.json";
+import { PentestCreatedModal } from "./modals/PentestCreatedModal";
+import { PwnsidianSettingTab } from "./settings/PwnsidianSettingTab";
+import { VulnerabilityModal } from "./settings/VulnerabilityModal";
 
 interface PwnsidianSettings {
   hideRibbons: boolean;
@@ -78,95 +74,5 @@ export default class PwnsidianPlugin extends Plugin {
     new Notice(`Pentest Created: ${pentest}`);
 
     new PentestCreatedModal(this.app, pentest).open();
-  }
-}
-
-class PwnsidianSettingTab extends PluginSettingTab {
-  plugin: PwnsidianPlugin;
-
-  constructor(app: App, plugin: PwnsidianPlugin) {
-    super(app, plugin);
-    this.plugin = plugin;
-  }
-
-  display(): void {
-    let { containerEl } = this;
-
-    containerEl.empty();
-
-    new Setting(containerEl)
-      .setName("Hide other ribbons")
-      .setDesc("Check this option to hide other ribbons in the navigation bar")
-      .addToggle((toggle) =>
-        toggle
-          .setValue(this.plugin.settings.hideRibbons)
-          .onChange(async (value) => {
-            this.plugin.settings.hideRibbons = value;
-            await this.plugin.saveSettings();
-
-            // Appliquer immédiatement les changements
-            this.plugin.toggleRibbonsVisibility();
-          })
-      );
-  }
-}
-
-class VulnerabilityModal extends Modal {
-  private vulnerabilities: any[];
-
-  constructor(app: App, vulnerabilities: any[]) {
-    super(app);
-    this.vulnerabilities = vulnerabilities;
-  }
-
-  onOpen() {
-    const { contentEl } = this;
-
-    contentEl.createEl("h2", { text: "Vulnérabilités OWASP WSTG" });
-
-    this.vulnerabilities.forEach((vuln) => {
-      const vulnEl = contentEl.createEl("div", { cls: "vulnerability-item" });
-      vulnEl.createEl("h3", { text: vuln.name });
-      vulnEl.createEl("p", { text: `Description: ${vuln.description}` });
-      vulnEl.createEl("p", { text: `CVSS: ${vuln.cvss}` });
-    });
-  }
-
-  onClose() {
-    const { contentEl } = this;
-    contentEl.empty();
-  }
-}
-
-class PentestCreatedModal extends Modal {
-  private pentest: any;
-
-  constructor(app: any, pentest: any) {
-    super(app);
-    this.pentest = pentest;
-  }
-
-  onOpen() {
-    const { contentEl } = this;
-    contentEl.createEl("h2", { text: "Pentest Created" });
-    contentEl.createEl("p", {
-      text: `New Pentest created with ID: ${this.pentest.id}`,
-    });
-    contentEl.createEl("p", {
-      text: `Created At: ${this.pentest.createdAt}`,
-    });
-    const closeButton = contentEl.createEl("button", {
-      text: "Close",
-      cls: "mod-warning",
-    });
-
-    closeButton.addEventListener("click", () => {
-      this.close();
-    });
-  }
-
-  onClose() {
-    const { contentEl } = this;
-    contentEl.empty();
   }
 }
